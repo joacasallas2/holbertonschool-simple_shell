@@ -25,12 +25,15 @@ int main(int ac, char **av, char **env)
 		}
 		/*Reads input and store in line_ptr*/
 		line_ptr = read_line();
-		/*Tokenizes the input and store in commands*/
-		commands = tokenizer(line_ptr, " \n");
-		free(line_ptr);
-		/*Executes the commands*/
-		_exec(commands, env);
-		free_array(commands);
+		if (line_ptr != NULL)
+		{
+			/*Tokenizes the input and store in commands*/
+			commands = tokenizer(line_ptr, " \n");
+			free(line_ptr);
+			/*Executes the commands*/
+			_exec(commands, env);
+			free_array(commands);
+		}
 	}
 	return (0);
 }
