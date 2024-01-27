@@ -38,9 +38,7 @@ char *read_line(void)
 		if (feof(stdin))
 		{
 			if (isatty(0))
-			{
 				printf("\n");
-			}
 			exit(EXIT_SUCCESS);
 		}
 		perror("./shell");
