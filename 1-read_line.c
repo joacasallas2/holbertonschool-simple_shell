@@ -29,7 +29,7 @@ char *read_line(void)
 	if (flag == 0)
 	{
 		free(line_ptr);
-		return (NULL);
+		exit(EXIT_SUCCESS);
 	}
 	/*Handles end-of-file conditions or errors*/
 	if (readed == -1)
