@@ -11,8 +11,8 @@ char *read_line(void)
 	size_t n = 0;
 	int i = 0, flag = 1;
 
+	line_ptr = NULL;
 	readed = getline(&line_ptr, &n, stdin);
-	/*Handles end-of-file conditions or errors*/
 	if (readed == -1)
 	{
 		free(line_ptr);
