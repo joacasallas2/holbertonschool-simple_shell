@@ -18,5 +18,6 @@ pid_t _exec(char **commands, char **env);
 char *get_path_exec(char *commands, char **env);
 char **path_dir(char **env);
 char *get_path(char **env);
+void print_array(char **array);
 
 #endif

@@ -36,6 +36,11 @@ int main(int ac, char **av, char **env)
 			free_array(commands);
 			exit(EXIT_SUCCESS);
 		}
+		if (strcmp(commands[0], "env") == 0)
+		{
+			print_array(env);
+		}
+
 		/*Executes the commands*/
 		_exec(commands, env);
 		free_array(commands);
