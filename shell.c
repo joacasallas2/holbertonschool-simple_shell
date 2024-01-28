@@ -14,7 +14,6 @@ int main(int ac, char **av, char **env)
 
 	(void)ac;
 	(void)av;
-
 	/*runs an infinite loop to keep the shell active.*/
 	while (1)
 	{
@@ -32,6 +31,11 @@ int main(int ac, char **av, char **env)
 		/*Tokenizes the input and store in commands*/
 		commands = tokenizer(line_ptr, " \n");
 		free(line_ptr);
+		if (strcmp(commands[0], "exit") == 0)
+		{
+			free_array(commands);
+			exit(EXIT_SUCCESS);
+		}
 		/*Executes the commands*/
 		_exec(commands, env);
 		free_array(commands);
