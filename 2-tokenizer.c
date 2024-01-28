@@ -8,7 +8,7 @@
  */
 char **tokenizer(char *line_ptr, char *delim)
 {
-	char *token;
+	char *token, *line_ptr_copy;
 	char **buffer;
 	int i = 0, j = 0;
 
@@ -19,7 +19,12 @@ char **tokenizer(char *line_ptr, char *delim)
 		return (NULL);
 	}
 	/* split the input line into tokens.*/
-	token = strtok(line_ptr, delim);
+	line_ptr_copy = strdup(line_ptr);
+	if (line_ptr_copy == NULL)
+	{
+		return (NULL);
+	}
+	token = strtok(line_ptr_copy, delim);
 	while (token != NULL)
 	{
 		/*Allocates memory for each token using strdup.*/
@@ -38,5 +43,6 @@ char **tokenizer(char *line_ptr, char *delim)
 		i++;
 	}
 	buffer[i] = NULL;
+	free(line_ptr_copy);
 	return (buffer);
 }
