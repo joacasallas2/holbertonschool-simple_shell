@@ -23,14 +23,16 @@ char *get_path_exec(char *command, char **env)
 	}
 	path = get_path(env);
 	if (path == NULL)
-		free(path);
+		return (NULL);
 	path_directories = tokenizer(path, ":=");
 	if (path_directories == NULL)
+		return (NULL);
+	full_path_command = malloc(sizeof(char *) * 1024);
+	if (full_path_command == NULL)
 	{
-		free(path);
+		free_array(path_directories);
 		return (NULL);
 	}
-	full_path_command = malloc(sizeof(char *) * 1024);
 	while (path_directories[i])
 	{
 		snprintf(full_path_command,
